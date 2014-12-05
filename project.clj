@@ -1,6 +1,5 @@
 (defproject changelog "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :description "clojure library designed to parse changleog files"
+  :url "http://yosiat.github.io"
+  :license {}
   :dependencies [[org.clojure/clojure "1.6.0"]])
