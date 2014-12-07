@@ -91,7 +91,7 @@
     (is (= (list (list "Bug 10" "Bug 9" "Bug 8") (list "Bug 1" "Bug 2" "Bug 3"))
            (vals (parse simple-changelog))))
 
-    ;; check the whoel shabeng
+    ;; check the whole shabeng
     (is (= { "0.2" (list "Bug 10" "Bug 9" "Bug 8")
              "0.7" (list "Bug 1" "Bug 2" "Bug 3") }
            (parse simple-changelog)))))

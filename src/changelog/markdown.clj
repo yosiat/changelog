@@ -41,6 +41,27 @@
 
 
 (defn parse-changelog
+  "Parsing the given parsed markdown and returns a map where the keys are the
+  versions and the values the list of things that changes.
+
+  example:
+  For the next parsed changelog -
+  # clojure
+  ## 0.2
+  * Adding **macros**
+  * Improving performacne
+
+  ## 0.1
+  * Initial interpeter
+
+  The output will be -
+  {
+    0.2: Adding <strong>macros</strong>, Improving performance
+    0.1: Initial interpeter
+  }
+  "
+  ;; Our execution plan:
+  ;;
   ;; We have the rest of the tags
   ;; Our accumulated result
   ;; and the last version headline we saw
