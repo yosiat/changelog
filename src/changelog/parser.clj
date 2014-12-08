@@ -50,7 +50,7 @@
 
             :else (parse-changelog next-tags result last-headline)))))
 
-  ([tags] (parse-changelog tags {} nil)))
+  ([tags] (parse-changelog tags (sorted-map) nil)))
 
 
 (defn parse [changelog]
