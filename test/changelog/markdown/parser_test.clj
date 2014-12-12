@@ -1,6 +1,6 @@
-(ns changelog.parser-test
+(ns changelog.markdown.parser-test
   (:require [clojure.test :refer :all]
-            [changelog.parser :refer :all]))
+            [changelog.markdown.parser :refer :all]))
 
 (def simple-changelog (str "# This is the simplest changelog\n"
                            "## Version 0.7\n"

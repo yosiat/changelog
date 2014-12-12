@@ -1,6 +1,6 @@
-(ns changelog.markdown-test
+(ns changelog.markdown.manip-test
   (:require [clojure.test :refer :all]
-            [changelog.markdown :refer :all]))
+            [changelog.markdown.manip :refer :all]))
 
 (deftest is-headline-on-non-healdine-tags
   (do (is (not (is-headline {:tag :ul, :content ()})))
@@ -55,3 +55,4 @@
 
 
 
+(run-tests)

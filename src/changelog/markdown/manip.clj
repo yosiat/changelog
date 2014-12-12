@@ -1,4 +1,4 @@
-(ns changelog.markdown
+(ns changelog.markdown.manip
   (:require [endophile.core :as ep]
             [changelog.version :refer :all]))
 

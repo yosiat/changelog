@@ -1,5 +1,5 @@
-(ns changelog.parser
-  (:require [changelog.markdown :refer :all]))
+(ns changelog.markdown.parser
+  (:require [changelog.markdown.manip :refer :all]))
 
 
 (defn parse-changelog
