@@ -3,4 +3,5 @@
   :url "http://yosiat.github.io"
   :license {}
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 [tentacles "0.2.7"]
                  [endophile "0.1.2"]])
