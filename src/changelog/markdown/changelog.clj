@@ -1,4 +1,4 @@
-(ns changelog.markdown.parser
+(ns changelog.markdown.changelog
   (:require [changelog.markdown.manip :refer :all]))
 
 
@@ -53,7 +53,8 @@
   ([tags] (parse-changelog tags (sorted-map) nil)))
 
 
-(defn parse [changelog]
+(defn changelog [markdown]
   "Parse the changelog, parse it's markdown and returns
   a parsed changelog (see 'parse-changelog')"
-  (parse-changelog (parse-markdown changelog)))
+  (parse-changelog (parse-markdown markdown)))
+

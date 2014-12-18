@@ -1,6 +1,6 @@
-(ns changelog.markdown.parser-test
+(ns changelog.markdown.changelog-test
   (:require [clojure.test :refer :all]
-            [changelog.markdown.parser :refer :all]))
+            [changelog.markdown.changelog :refer :all]))
 
 (def simple-changelog (str "# This is the simplest changelog\n"
                            "## Version 0.7\n"
@@ -27,26 +27,25 @@
 
 
 (deftest invalid-changelog
-  (do (is (= {} (parse changelog-headlines-without-version)))
-      (is (= {} (parse changelog-headlines-with-version-without-lists)))))
+  (do (is (= {} (changelog changelog-headlines-without-version)))
+      (is (= {} (changelog changelog-headlines-with-version-without-lists)))))
 
 
 ;; in this test, I test the keys and values separately and then the whole map
 ;; becuase if one them fail - it will be easier to triage
-(deftest parse-versions-and-changelist
+(deftest changelog-versions-and-changelist
   (do
     ;; check the versions
-    (is (= ["0.2" "0.7"] (keys (parse simple-changelog))))
+    (is (= ["0.2" "0.7"] (keys (changelog simple-changelog))))
 
     ;; check the values
     (is (= (list (list "Bug 10" "Bug 9" "Bug 8") (list "Bug 1" "Bug 2" "Bug 3"))
-           (vals (parse simple-changelog))))
+           (vals (changelog simple-changelog))))
 
     ;; check the whole shabeng
     (is (= { "0.2" (list "Bug 10" "Bug 9" "Bug 8")
              "0.7" (list "Bug 1" "Bug 2" "Bug 3") }
-           (parse simple-changelog)))))
+           (changelog simple-changelog)))))
 
 
 
-(run-tests)
