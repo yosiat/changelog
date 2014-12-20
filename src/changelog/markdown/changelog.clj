@@ -1,6 +1,8 @@
 (ns changelog.markdown.changelog
   (:require [changelog.markdown.manip :refer :all]))
 
+(defn- tags-only [tags]
+  (filter map? tags))
 
 (defn parse-changelog
   "Parsing the given parsed markdown and returns a map where the keys are the
@@ -34,7 +36,7 @@
       (let [current-tag (first tags)
             next-tags (rest tags)
             version (version-headline current-tag)]
-          (cond
+         (cond
             ;; if current tag is a version let's continue
             ;; IMPORTANT: this line should be before the list check
             ;; so we will not stuck in infinite loop in-case there is no list
@@ -50,7 +52,7 @@
 
             :else (parse-changelog next-tags result last-headline)))))
 
-  ([tags] (parse-changelog tags (sorted-map) nil)))
+  ([tags] (parse-changelog (tags-only tags) (sorted-map) nil)))
 
 
 (defn changelog [markdown]
