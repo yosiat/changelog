@@ -8,17 +8,29 @@
 
 (defn parse-markdown [markdown]
   "Parses the markdown using endophile"
-  (ep/to-clj (ep/mp markdown)))
+  (try
+    (ep/to-clj (ep/mp markdown))
+    ;; Catching exception - if this is not a valid markdown
+    ;; we would like to return empty vector.
+    (catch Exception e [])))
 
 (defn is-headline [tag]
   "Checks whether this tag is an headline tag (h1, h2 or h3)"
   (contains? markdown-headline-tags (tag :tag)))
 
+(defn inner-content [header]
+    "Returns the inner content of header (can handle nested headers) separated
+    by space"
+    (cond
+        (map? header) (inner-content (header :content ""))
+        (or (seq? header) (vector? header) (list? header)) (flatten (map inner-content header))
+        (string? header) [header]))
+
 (defn version-headline [tag]
   "Returns the version from this headline, if there is no version or this not
   an headline - nil will be returned"
   (if (is-headline tag)
-      (first (map extract-version (tag :content)))
+      (first (remove nil? (map extract-version (inner-content tag))))
       nil))
 
 (defn is-list [tag]
